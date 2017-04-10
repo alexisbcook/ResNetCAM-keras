@@ -3,7 +3,9 @@ Keras implementation of a ResNet-CAM model with Keras
 
 ## Motivation
 
-The original matlab implementation and paper [here](https://github.com/metalbubble/CAM) can be found here, for AlexNet, GoogLeNet, and VGG16.  This implementation uses ResNet-50, which was not explored in the original paper.  A Keras implementation of VGG-CAM can be found [here](https://github.com/tdeboissiere/VGG16CAM-keras/blob/master/README.md).
+The original Matlab implementation and paper (for AlexNet, GoogLeNet, and VGG16) can be found [here](https://github.com/metalbubble/CAM).  A Keras implementation of VGG-CAM can be found [here](https://github.com/tdeboissiere/VGG16CAM-keras/blob/master/README.md).
+
+This implementation is also in Keras and uses ResNet-50, which was __not__ explored in the original paper.  
 
 ## Requirements
 
