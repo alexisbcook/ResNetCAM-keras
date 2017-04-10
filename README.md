@@ -21,3 +21,7 @@ coming soon :) -- for now, see the ipython notebook
 ## Example plot
 
 coming soon!
+
+## Blog Post
+
+This repository is discussed in the blog post [here](https://alexisbcook.github.io/2017/global-average-pooling-layers-for-object-localization/).
