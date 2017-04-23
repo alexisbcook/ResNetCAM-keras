@@ -22,7 +22,13 @@ This implementation is written in Keras and uses ResNet-50, which was __not__ ex
 
 ## Usage
 
-`python ResNet_CAM.py path-to-image.png`
+``` 
+git clone https://github.com/alexisbcook/ResNetCAM-keras.git
+cd ResNetCAM-keras
+python ResNet_CAM.py images/dog.png
+```
+
+Feel free to try out your own image by replacing `images/dog.png` with a file path to another image! :)
 
 ## Example plots
 
