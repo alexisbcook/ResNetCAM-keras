@@ -1,3 +1,7 @@
+[//]: # (Image References)
+
+[image1]: ./images/dog_localization "Dog Localization"
+
 # ResNetCAM-keras
 Keras implementation of a ResNet-CAM model with Keras
 
@@ -5,7 +9,7 @@ Keras implementation of a ResNet-CAM model with Keras
 
 The original Matlab implementation and paper (for AlexNet, GoogLeNet, and VGG16) can be found [here](https://github.com/metalbubble/CAM).  A Keras implementation of VGG-CAM can be found [here](https://github.com/tdeboissiere/VGG16CAM-keras/blob/master/README.md).
 
-This implementation is also in Keras and uses ResNet-50, which was __not__ explored in the original paper.  
+This implementation is written in Keras and uses ResNet-50, which was __not__ explored in the original paper.  
 
 ## Requirements
 
@@ -18,11 +22,11 @@ This implementation is also in Keras and uses ResNet-50, which was __not__ explo
 
 ## Usage
 
-coming soon :) -- for now, see the ipython notebook
+`python ResNet_CAM.py path-to-image.png`
 
-## Example plot
+## Example plots
 
-coming soon!
+![Dog Localization][image1]
 
 ## Blog Post
 

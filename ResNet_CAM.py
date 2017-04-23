@@ -44,15 +44,19 @@ def ResNet_CAM(img_path, model, all_amp_layer_weights):
     # return class activation map
     return final_output, pred
     
-# load image, convert BGR --> RGB, resize image to 224 x 224, and plot image
 def plot_ResNet_CAM(img_path, ax, model, all_amp_layer_weights):
+    # load image, convert BGR --> RGB, resize image to 224 x 224,
     im = cv2.resize(cv2.cvtColor(cv2.imread(img_path), cv2.COLOR_BGR2RGB), (224, 224))
+    # plot image
     ax.imshow(im, alpha=0.5)
+    # get class activation map
     CAM, pred = ResNet_CAM(img_path, model, all_amp_layer_weights)
+    # plot class activation map
     ax.imshow(CAM, cmap='jet')
     # load the dictionary that identifies each ImageNet category to an index in the prediction vector
     with open('imagenet1000_clsid_to_human.txt') as imagenet_classes_file:
         imagenet_classes_dict = ast.literal_eval(imagenet_classes_file.read())
+    # obtain the predicted ImageNet category
     ax.set_title(imagenet_classes_dict[pred])    
 
 if __name__ == '__main__':
