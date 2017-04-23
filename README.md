@@ -1,6 +1,6 @@
 [//]: # (Image References)
 
-[image1]: ./images/dog_localization "Dog Localization"
+[image1]: ./images/dog_localization.png "Dog Localization"
 
 # ResNetCAM-keras
 Keras implementation of a ResNet-CAM model with Keras
