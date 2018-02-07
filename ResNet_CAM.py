@@ -7,6 +7,8 @@ from keras.applications.resnet50 import ResNet50, preprocess_input
 from keras.preprocessing import image    
 from keras.models import Model   
 import sys
+import tensorflow as tf
+import keras.backend as K
 
 def pretrained_path_to_tensor(img_path):
     # loads RGB image as PIL.Image.Image type
@@ -36,11 +38,19 @@ def ResNet_CAM(img_path, model, all_amp_layer_weights):
     # get model's prediction (number between 0 and 999, inclusive)
     pred = np.argmax(pred_vec)
     # bilinear upsampling to resize each filtered image to size of original image 
-    mat_for_mult = scipy.ndimage.zoom(last_conv_output, (32, 32, 1), order=1) # dim: 224 x 224 x 2048
+    mat_for_mult = tf.image.resize_images(last_conv_output, [224, 224]) # dim: 224 x 224 x 2048
     # get AMP layer weights
     amp_layer_weights = all_amp_layer_weights[:, pred] # dim: (2048,) 
-    # get class activation map for object class that is predicted to be in the image
-    final_output = np.dot(mat_for_mult.reshape((224*224, 2048)), amp_layer_weights).reshape(224,224) # dim: 224 x 224
+    # convert weights to tensorflow tensor
+    amp_layer_weights=tf.convert_to_tensor(amp_layer_weights)
+    # reshape mat_for_mult to 224x224, 2048
+    mat_for_mult=tf.reshape(mat_for_mult,(224*224, 2048))
+    # get class activation output tensor for object class that is predicted to be in the image
+    final_output = tf.tensordot(mat_for_mult, amp_layer_weights,axes=1)
+    # reshape output 
+    final_output=tf.reshape(final_output,(224,224)) # dim: 224 x 224
+    # convert output tensor to numpy array 
+    final_output=final_output.eval(session=K.get_session())
     # return class activation map
     return final_output, pred
     
